@@ -6,9 +6,9 @@ import 'dart:convert';
 import 'dart:ui' as ui show Color;
 
 import 'package:flinq/flinq.dart';
-import 'package:google_maps/google_maps.dart';
 import 'package:google_directions_api/google_directions_api.dart'
     show GeoCoord, GeoCoordBounds;
+import 'package:google_maps/google_maps.dart';
 
 extension WebLatLngExtensions on LatLng {
   GeoCoord toGeoCoord() => GeoCoord(this.lat, this.lng);
@@ -43,8 +43,9 @@ extension WebColorExtensions on ui.Color {
 }
 
 extension WebMapStyleExtension on String {
-  MapTypeStyleElementType _elementTypeFromString(String value) {
-    switch (value) {
+  String _elementTypeFromString(String value) {
+    return value;
+    /*switch (value) {
       case 'all':
         return MapTypeStyleElementType.ALL;
       case 'geometry':
@@ -66,11 +67,12 @@ extension WebMapStyleExtension on String {
 
       default:
         return null;
-    }
+    }*/
   }
 
-  MapTypeStyleFeatureType _featureTypeFromString(String value) {
-    switch (value) {
+  String _featureTypeFromString(String value) {
+    return value;
+    /*switch (value) {
       case 'administrative':
         return MapTypeStyleFeatureType.ADMINISTRATIVE;
       case 'administrative.country':
@@ -140,18 +142,10 @@ extension WebMapStyleExtension on String {
 
       default:
         return null;
-    }
+    }*/
   }
 
-  MapTypeStyler _stylerFromMap(Map<String, dynamic> map) => MapTypeStyler()
-    ..color = map['color']
-    ..gamma = map['gamma']
-    ..hue = map['hue']
-    ..invertLightness = map['invertLightness']
-    ..lightness = map['lightness']
-    ..saturation = map['saturation']
-    ..visibility = map['visibility']
-    ..weight = map['weight'];
+  dynamic _stylerFromMap(Map<String, dynamic> map) => map;
 
   List<MapTypeStyle> parseMapStyle() {
     final List map = json.decode(this);

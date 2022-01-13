@@ -2,23 +2,22 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
-import 'dart:html';
 import 'dart:async';
+import 'dart:html';
 import 'dart:ui' as ui;
 
-import 'package:flutter/widgets.dart';
-import 'package:flutter/scheduler.dart' show SchedulerBinding;
-
-import 'package:uuid/uuid.dart';
 import 'package:flinq/flinq.dart';
-import 'package:google_maps/google_maps.dart';
+import 'package:flutter/scheduler.dart' show SchedulerBinding;
+import 'package:flutter/widgets.dart';
 import 'package:google_directions_api/google_directions_api.dart'
     show GeoCoord, GeoCoordBounds;
+import 'package:google_maps/google_maps.dart';
+import 'package:uuid/uuid.dart';
 
-import 'utils.dart';
 import '../core/google_map.dart';
-import '../core/utils.dart' as utils;
 import '../core/map_items.dart' as items;
+import '../core/utils.dart' as utils;
+import 'utils.dart';
 
 class GoogleMapState extends GoogleMapStateBase {
   final htmlId = Uuid().v1();
@@ -518,7 +517,7 @@ class GoogleMapState extends GoogleMapStateBase {
       ..mapTypeControl = widget.webPreferences.mapTypeControl
       ..scrollwheel = widget.webPreferences.scrollwheel
       ..panControl = widget.webPreferences.panControl
-      ..overviewMapControl = widget.webPreferences.overviewMapControl
+      /*..overviewMapControl = widget.webPreferences.overviewMapControl*/
       ..rotateControl = widget.webPreferences.rotateControl
       ..scaleControl = widget.webPreferences.scaleControl
       ..zoomControl = widget.webPreferences.zoomControl
