@@ -11,7 +11,7 @@ import 'package:google_directions_api/google_directions_api.dart'
 import 'package:google_maps/google_maps.dart';
 
 extension WebLatLngExtensions on LatLng {
-  GeoCoord toGeoCoord() => GeoCoord(this.lat, this.lng);
+  GeoCoord toGeoCoord() => GeoCoord(this.lat as double, this.lng as double);
 }
 
 extension WebGeoCoordExtensions on GeoCoord {
@@ -43,7 +43,7 @@ extension WebColorExtensions on ui.Color {
 }
 
 extension WebMapStyleExtension on String {
-  String _elementTypeFromString(String value) {
+  String? _elementTypeFromString(String? value) {
     return value;
     /*switch (value) {
       case 'all':
@@ -70,7 +70,7 @@ extension WebMapStyleExtension on String {
     }*/
   }
 
-  String _featureTypeFromString(String value) {
+  String? _featureTypeFromString(String? value) {
     return value;
     /*switch (value) {
       case 'administrative':
@@ -145,7 +145,7 @@ extension WebMapStyleExtension on String {
     }*/
   }
 
-  dynamic _stylerFromMap(Map<String, dynamic> map) => map;
+  dynamic _stylerFromMap(Map<String, dynamic>? map) => map;
 
   List<MapTypeStyle> parseMapStyle() {
     final List map = json.decode(this);
@@ -153,7 +153,7 @@ extension WebMapStyleExtension on String {
       (style) => MapTypeStyle()
         ..elementType = _elementTypeFromString(style['elementType'])
         ..featureType = _featureTypeFromString(style['featureType'])
-        ..stylers = (style['stylers'] as List)?.mapList(
+        ..stylers = (style['stylers'] as List?)?.mapList(
           (styler) => _stylerFromMap(styler),
         ),
     );
